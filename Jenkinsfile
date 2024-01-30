@@ -20,23 +20,31 @@ pipeline {
     }
 
 		stage('Build image') {
-			app = docker.build("${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
+			steps{
+				app = docker.build("${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
+				}
     }
 
 		stage('Push image') {
-			withDockerRegistry([ credentialsId: "26bf06be-57ef-4f75-bc44-c1a362b8b896", url: "" ]) {
-			app.push()
-			app.push("latest")
+			steps{
+				withDockerRegistry([ credentialsId: "26bf06be-57ef-4f75-bc44-c1a362b8b896", url: "" ]) {
+				app.push()
+				app.push("latest")
+			}	
 		}
     }
 
 		stage('Deploy') {
-			sh ("docker run -d -p 3333:3333 ${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
+			steps{
+				sh ("docker run -d -p 3333:3333 ${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
+			}
     }
 
 		stage('Remove old images') {
-			// remove old docker images
-			sh("docker rmi ${dockerhubaccountid}/${application}:latest -f")
+			steps{
+				// remove old docker images
+				sh("docker rmi ${dockerhubaccountid}/${application}:latest -f")
+			}
    }
 }
 }
