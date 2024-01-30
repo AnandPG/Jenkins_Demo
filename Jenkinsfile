@@ -6,7 +6,7 @@ node {
         steps {
                 script {
                     // Clone the Git repository's master branch
-                    def gitRepoUrl = 'https://github.com/AnandPG/Jenkins_Upgradev3.git'
+                    def gitRepoUrl = 'https://github.com/AnandPG/Jenkins_Demo.git'
 
                     checkout([$class: 'GitSCM', 
                         branches: [[name: '*/master']], 
