@@ -1,7 +1,7 @@
 node {
     def application = "pythonapp"
     def dockerhubaccountid = "anand1104"
-	def BUILD_NUMBER = 1.0
+    def BUILD_NUMBER = 1.0
     stage('Clone repository') {
         steps {
                 script {
