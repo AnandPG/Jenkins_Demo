@@ -53,12 +53,12 @@ pipeline {
 					sh("docker rmi ${dockerhubaccountid}/${application}:latest -f")
 				}
 			}		
-   }
-	    
+    }
+  }    
 	post {
 		always{
 			cleanWs()
 		}
 	}
-}
+
 }
