@@ -4,20 +4,20 @@ def dockerhubaccountid = "anand1104"
 pipeline {
     agent any
     stages {
-		//stage('Clone repository') {
-		//	steps {
-               // script {
+		stage('Clone repository') {
+			steps {
+             	 	 script {
                     // Clone the Git repository's master branch
-               //     def gitRepoUrl = 'https://github.com/AnandPG/Jenkins_Demo.git'
+               	     	  def gitRepoUrl = 'https://github.com/AnandPG/Jenkins_Demo.git'
 
-                //    checkout([$class: 'GitSCM', 
-                //        branches: [[name: '*/master']], 
-                //        userRemoteConfigs: [[url: gitRepoUrl]], 
-                //        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
-              //      ])
-            //    }
-          //  }
-   // }
+                    	 checkout([$class: 'GitSCM', 
+                       	  branches: [[name: '*/master']], 
+                       	  userRemoteConfigs: [[url: gitRepoUrl]], 
+                       	  extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
+                    ])
+                }
+            }
+    }
 
 		stage('Build image') {
 			steps{
