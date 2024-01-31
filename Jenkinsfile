@@ -49,7 +49,7 @@ pipeline {
 		stage('Remove old images') {
 			steps{
 				script {
-					// remove old docker images
+					// remove old docker imagess
 					sh("docker rmi ${dockerhubaccountid}/${application}:latest -f")
 				}
 			}		
