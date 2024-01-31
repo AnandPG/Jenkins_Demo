@@ -60,5 +60,11 @@ pipeline {
 			cleanWs()
 		}
 	}
+	success{
+		echo 'pipeline builded successfully'
+	}
+	failure{
+		echo "pipeline build failed"
+	}
 
 }
