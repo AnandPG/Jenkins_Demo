@@ -50,7 +50,7 @@ pipeline {
 			steps{
 				script {
 					// remove old docker imagess
-					sh("docker rmi ${dockerhubaccountid}/${application}:latest -f")
+					sh("docker rmi ${dockerhubaccountid}/${application}:${BUILD_NUMBER} -f")
 				}
 			}		
     }
