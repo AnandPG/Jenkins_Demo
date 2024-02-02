@@ -31,8 +31,8 @@ pipeline {
 			steps{
 				script {
 					withDockerRegistry([ credentialsId: "26bf06be-57ef-4f75-bc44-c1a362b8b896", url: "" ]) {
-					app.push()
-					//app.push("latest")
+					//app.push()
+					app.push("latest")
 				}	
 			}
 		}
@@ -50,7 +50,7 @@ pipeline {
 			steps{
 				script {
 					// remove old docker imagess
-					sh("docker rmi ${dockerhubaccountid}/${application}:${BUILD_NUMBER} -f")
+					sh("docker rmi ${dockerhubaccountid}/${application}:latest -f")
 				}
 			}		
     }
