@@ -1,0 +1,25 @@
+name: Update Develop Branch
+
+on:
+  push:
+    branches: [release]
+    
+permissions: write-all
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+    
+      - name: Update Develop Branch
+        run: |
+          git checkout release
+          git fetch origin
+          git checkout develop
+          git pull
+          git merge origin/release
+          git push origin develop
